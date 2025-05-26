@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tank Game - Start</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo"><img src="/assets/tanktuesday.png" /></div>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="game.html">Play</a>
+        <a href="profile.html">Profile</a>
+        <a href="index.html">Log out</a>
+      </div>
+    </nav>
+    <div id="wrapper">
+      <div class="main-container">
+        <p id="usernameDisplay"></p>
+        <div class="home-container">
+          <div class="home-text-container">
+            <h1>TankTuesday</h1>
+            <p>
+              A real-time 1v1 game where players control their own tanks, and
+              try to defeat opponents by shooting and maneuvering in a shared
+              arena.
+            </p>
+            <button id="playButton">Play Game!</button>
+          </div>
+          <div class="home-image-container">
+            <img src="./assets/image.png" />
+          </div>
+        </div>
+
+        <div class="sub-container">
+          <div class="control-container">
+            <div class="control-image-container">
+              <h4>Moving</h4>
+              <img src="./assets/wasd.png" />
+              <p>
+                TankTuesday uses the WASD keys for movement instead of the arrow
+                keys.
+              </p>
+            </div>
+            <div class="control-image-container">
+              <h4>Aiming & Shooting</h4>
+              <img src="./assets/aiming.png" />
+              <img src="./assets/leftclick.png" />
+              <p>
+                To shoot at an enemy, point your cursor at them and fire with
+                left click!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      document.getElementById("playButton").addEventListener("click", () => {
+        window.location.href = "game.html";
+      });
+      const userName = localStorage.getItem("userName");
+      document.getElementById(
+        "usernameDisplay"
+      ).textContent = `Welcome ${userName}!`;
+    </script>
+  </body>
+</html>

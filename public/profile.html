@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Min Profil</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <nav>
+    <div class="logo"><img src="/assets/tanktuesday.png" /></div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="game.html">Play</a>
+      <a href="profile.html">Profile</a>
+      <a href="index.html">Log out</a>
+    </div>
+  </nav>
+  <body>
+    <div id="wrapper">
+      <div class="login-card control-image-container">
+        <div class="profile-container">
+          <h1>Your profile:</h1>
+
+          <p>Username: <span id="username"></span></p>
+          <p>Games played: <span id="games"></span></p>
+          <p>Wins: <span id="wins"></span></p>
+          <p>Losses: <span id="losses"></span></p>
+
+          <button id="backBtn">Go back to home</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/profile.ts"></script>
+    <script></script>
+  </body>
+</html>

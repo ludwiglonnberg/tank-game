@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registrera</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="login-container">
+        <img src="assets/tanktuesday.png" />
+
+        <div class="login-card control-image-container">
+          <h1>Register</h1>
+          <div id="message"></div>
+
+          <form id="register-form">
+            <input
+              type="text"
+              id="reg-username"
+              placeholder="Username"
+              required
+            />
+            <input type="email" id="reg-email" placeholder="E-mail" required />
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit">Register now!</button>
+          </form>
+
+          <p>Already have an account? <a href="/index.html">Log in!</a></p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/register.ts"></script>
+  </body>
+</html>
