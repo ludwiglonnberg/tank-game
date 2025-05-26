@@ -29,7 +29,7 @@ document.getElementById("login-form")!.addEventListener("submit", async (e) => {
     }
 
     const data = await res.json();
-    showMessage(`Välkommen, ${data.username}!`);
+    showMessage(`Welcome, ${data.username}!`);
     localStorage.setItem("userId", data.userId);
     localStorage.setItem("userName", data.username);
     setTimeout(() => {
