@@ -36,6 +36,6 @@ document.getElementById("login-form")!.addEventListener("submit", async (e) => {
       window.location.href = "/home.html";
     }, 1000);
   } catch (error) {
-    showMessage("Något gick fel vid inloggning", true);
+    showMessage("Something went wrong", true);
   }
 });

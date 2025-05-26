@@ -9,8 +9,10 @@ body {
   position: relative;
   overflow: hidden;
 }
+#message {
+  margin-bottom: 10px;
+}
 
-/* Svart halvtransparent overlay */
 body::before {
   content: "";
   position: absolute;
@@ -18,11 +20,10 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Ändra opacitet här */
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 0;
 }
 
-/* Innehållet måste ligga ovanpå overlay */
 body > * {
   position: relative;
   z-index: 1;
@@ -32,7 +33,7 @@ body > * {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centrerar horisontellt */
+  align-items: center;
 }
 
 .login-container {
