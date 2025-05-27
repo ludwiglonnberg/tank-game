@@ -24,7 +24,7 @@ export function drawBackgound(ctx: CanvasRenderingContext2D) {
   for (let y = 0; y < grassMap.length; y++) {
     for (let x = 0; x < grassMap[0].length; x++) {
       const tileId = grassMap[y][x];
-      const sx = (tileId % 8) * TILE_SIZE; // 16 tiles per row in tileset
+      const sx = (tileId % 8) * TILE_SIZE;
       const sy = Math.floor(tileId / 8) * TILE_SIZE;
 
       ctx.drawImage(
@@ -41,6 +41,7 @@ export function drawBackgound(ctx: CanvasRenderingContext2D) {
     }
   }
 }
+
 const bulletImage = new Image();
 bulletImage.src = "assets/booleets.png";
 const BULLET_SIZE = 16;
@@ -75,11 +76,10 @@ function drawMap(ctx: CanvasRenderingContext2D) {
 
   for (let y = 0; y < tilesY; y++) {
     for (let x = 0; x < tilesX; x++) {
-      // Repeat the tileMap if the canvas is larger than the map
       const mapTileY = y % tileMap.length;
       const mapTileX = x % tileMap[0].length;
       const tileId = tileMap[mapTileY][mapTileX];
-      const sx = (tileId % 16) * TILE_SIZE; // 16 tiles per row in tileset
+      const sx = (tileId % 16) * TILE_SIZE;
       const sy = Math.floor(tileId / 16) * TILE_SIZE;
 
       ctx.drawImage(
@@ -96,6 +96,7 @@ function drawMap(ctx: CanvasRenderingContext2D) {
     }
   }
 }
+
 const tankImage = new Image();
 tankImage.src = "assets/tanksprite.png";
 const enemyTankImage = new Image();

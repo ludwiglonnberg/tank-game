@@ -21,11 +21,10 @@ export async function startConnection() {
   try {
     await connection.start();
 
-    // Vänta tills du får ditt riktiga ID från servern
     connection.on("ReceivePlayerId", async (id: string) => {
       playerId = id;
       console.log("Your serverID:", playerId);
-      // Registrera spelaren nu när vi vet ID:t
+
       if (userId !== null) {
         await connection.invoke("RegisterPlayer", username, userId);
       } else {

@@ -4,7 +4,7 @@ import { drawScene, drawBackgound, generateGrassMap } from "./renderer";
 import { Bullet } from "./bullet";
 import {
   isBulletCollidingWithWall,
-  checkBulletHitsOnTanks,
+  checkBulletHitsOnEnemy,
   checkIfPlayerGotHit,
 } from "./collision";
 import { Explosion } from "./explosion";
@@ -20,20 +20,17 @@ export let tank: Tank;
 let mouseX = 0;
 let mouseY = 0;
 
+const otherPlayersBullets: { [playerId: string]: Bullet[] } = {};
 export const bullets: Bullet[] = [];
 export const otherPlayers: { [id: string]: Tank } = {};
-const otherPlayersBullets: { [playerId: string]: Bullet[] } = {};
+
 const explosions: Explosion[] = [];
 const explosionImage = new Image();
 const tankExplosionImage = new Image();
 tankExplosionImage.src = "assets/explosion1.png";
-explosionImage.src = "assets/smoke1.png"; // anpassa sökvägen efter ditt projekt
+explosionImage.src = "assets/smoke1.png";
 
-export async function showGameOverScreen(
-  won: boolean,
-  winnerName: string,
-  winnerId: string
-) {
+export async function showGameOverScreen(won: boolean, winnerName: string) {
   const modal = document.getElementById("gameOverModal")!;
   const message = document.getElementById("gameOverMessage")!;
   const winnerInfo = document.getElementById("winnerInfo")!;
@@ -125,7 +122,7 @@ export function startGame(spawnX: number, spawnY: number) {
 
     explosions.forEach((exp, i) => {
       exp.update();
-      exp.draw(ctx!); // du kan spara explosionImage tidigare om du vill
+      exp.draw(ctx!);
       if (exp.done) explosions.splice(i, 1);
     });
 
@@ -138,8 +135,8 @@ export function startGame(spawnX: number, spawnY: number) {
       }
     }
 
-    // 🔥 Spelarens kulor träffar andra
-    checkBulletHitsOnTanks(
+    // Spelarens skott träffar andra
+    checkBulletHitsOnEnemy(
       bullets,
       otherPlayers,
       explosions,
@@ -149,13 +146,12 @@ export function startGame(spawnX: number, spawnY: number) {
         sendHit(enemyId, 25);
       }
     );
-    // 🔥 Andras kulor träffar spelaren
+    // Andras skott träffar spelaren
     checkIfPlayerGotHit(
       tank,
       otherPlayersBullets,
       explosions,
-      tankExplosionImage,
-      () => {} // tom, explosion sköts ändå inuti
+      tankExplosionImage
     );
 
     sendPlayerPosition(playerId, tank.x, tank.y, tank.angle, tank.turretAngle);

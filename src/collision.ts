@@ -38,13 +38,13 @@ export function checkBulletHits(
     const dist = Math.hypot(bullet.x - targetTank.x, bullet.y - targetTank.y);
     if (dist < 30 && targetTank.isAlive()) {
       onHit(i);
-      return true; // Träff hittad, sluta kolla fler kulor för denna tank
+      return true;
     }
   }
   return false;
 }
 // Kontrollera om spelarens kulor träffar andra tanks
-export function checkBulletHitsOnTanks(
+export function checkBulletHitsOnEnemy(
   bullets: Bullet[],
   targets: Record<string, Tank>,
   explosions: Explosion[],
@@ -73,22 +73,20 @@ export function checkIfPlayerGotHit(
   player: Tank,
   enemyBullets: { [playerId: string]: Bullet[] },
   explosions: Explosion[],
-  tankExplosionImage: HTMLImageElement,
-  onHit: (damage: number, x: number, y: number) => void
+  tankExplosionImage: HTMLImageElement
 ) {
   for (const id in enemyBullets) {
     const bullets = enemyBullets[id];
-    for (let i = bullets.length - 1; i >= 0; i--) {
-      const b = bullets[i];
-      const dx = b.x - player.x;
-      const dy = b.y - player.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < player.hitbox / 2) {
-        bullets.splice(i, 1);
-        explosions.push(new Explosion(b.x, b.y, tankExplosionImage));
-        onHit(25, b.x, b.y);
-      }
-    }
+
+    checkBulletHits(bullets, player, (i) => {
+      const hitBullet = bullets[i];
+
+      // Explosion + ta bort kulan
+      explosions.push(
+        new Explosion(hitBullet.x, hitBullet.y, tankExplosionImage)
+      );
+      bullets.splice(i, 1);
+    });
   }
 }
 
@@ -98,7 +96,6 @@ export function isTankCollidingWithWall(
   tileSize: number,
   tankSize: number
 ): boolean {
-  //tank.x - 64 / 2, tank.y - 64 / 2, 64, 64
   const corners = [
     { cx: x + tankSize / 2, cy: y - tankSize / 2 },
     { cx: x - tankSize / 2, cy: y - tankSize / 2 },
@@ -119,7 +116,7 @@ export function isTankCollidingWithWall(
       return true;
     }
     const tileId = tileMap[tileY][tileX];
-    if (isWall(tileId)) return true; // <--- ändrat här!
+    if (isWall(tileId)) return true;
   }
   return false;
 }
