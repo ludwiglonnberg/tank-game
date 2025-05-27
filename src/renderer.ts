@@ -209,7 +209,6 @@ export function drawScene(
     const enemy = otherPlayers[id];
     drawHealthBar(ctx, enemy.x, enemy.y, enemy.hp);
   }
-  ctx.strokeStyle = "red";
-  ctx.strokeRect(tank.x - 64 / 2, tank.y - 64 / 2, 64, 64);
+
   ctx.restore(); // Återställ canvas-rotation
 }
