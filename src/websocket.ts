@@ -12,8 +12,10 @@ if (!userId) {
 
 // När du ansluter SignalR:
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5166";
+
 export const connection = new signalR.HubConnectionBuilder()
-  .withUrl("http://localhost:5166/gamehub")
+  .withUrl(`${backendUrl}/gamehub`)
   .withAutomaticReconnect()
   .build();
 
