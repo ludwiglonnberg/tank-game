@@ -1,5 +1,5 @@
-const apiBase = "http://localhost:5166/api/user";
-
+const apiBase = import.meta.env.VITE_BACKEND_URL + "/api/user";
+import "../styles.css";
 function showMessage(msg: string, isError = false) {
   const messageDiv = document.getElementById("message")!;
   messageDiv.textContent = msg;

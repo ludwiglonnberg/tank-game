@@ -1,4 +1,4 @@
-const apiBase = "http://localhost:5166/api/user";
+const apiBase = import.meta.env.VITE_BACKEND_URL + "/api/user";
 
 function showMessage(msg: string, isError = false) {
   const messageDiv = document.getElementById("message")!;

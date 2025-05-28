@@ -39,7 +39,7 @@ export async function showGameOverScreen(won: boolean, winnerName: string) {
 
   if (userId) {
     try {
-      await fetch("http://localhost:5166/api/user/updateStats", {
+      await fetch(import.meta.env.VITE_BACKEND_URL + "api/user/updateStats", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
