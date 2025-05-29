@@ -101,10 +101,10 @@ connection.on("PlayerHealthUpdated", (id, newHealth) => {
   if (id === playerId) {
     tank.hp = newHealth;
 
-    console.log(`Din hälsa uppdaterad: ${newHealth}`);
+    console.log(`Your hp updated: ${newHealth}`);
   } else if (otherPlayers[id]) {
     otherPlayers[id].hp = newHealth;
-    console.log(`Motståndares (${id}) hälsa uppdaterad: ${newHealth}`);
+    console.log(`User (${id}) hp updated: ${newHealth}`);
   }
 });
 connection.on("GameOver", (winnerId, winnerName) => {

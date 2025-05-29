@@ -5,7 +5,7 @@ export class Bullet {
   y: number;
   dx: number;
   dy: number;
-  speed: number = 8;
+  speed: number = 15;
   angle: number = 0;
 
   frame: number = 0;
