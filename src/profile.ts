@@ -1,10 +1,10 @@
 const userId = localStorage.getItem("userId");
-
+const apiBase = import.meta.env.VITE_BACKEND_URL + "/api/user";
 if (!userId) {
   alert("No user connected!");
   window.location.href = "/login.html";
 } else {
-  fetch(`http://localhost:5166/api/user/stats/${parseInt(userId)}`)
+  fetch(apiBase + "/stats/${parseInt(userId)}")
     .then((res) => {
       if (!res.ok) throw new Error("Kunde inte hämta statistik");
       return res.json();
@@ -26,5 +26,5 @@ if (!userId) {
 
 // Tillbaka-knapp
 document.getElementById("backBtn")?.addEventListener("click", () => {
-  window.location.href = "/home.html";
+  window.location.href = "home.html";
 });
