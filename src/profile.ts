@@ -4,7 +4,7 @@ if (!userId) {
   alert("No user connected!");
   window.location.href = "/login.html";
 } else {
-  fetch(apiBase + "/stats/${parseInt(userId)}")
+  fetch(`${apiBase}/stats/${parseInt(userId)}`)
     .then((res) => {
       if (!res.ok) throw new Error("Kunde inte hämta statistik");
       return res.json();
