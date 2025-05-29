@@ -9,10 +9,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: "public/index.html",
-        register: resolve(__dirname, "public/register.html"),
-        home: "public/home.html",
-        game: "public/game.html",
+        login: resolve(__dirname, "index.html"),
+        register: resolve(__dirname, "register.html"),
+        home: resolve(__dirname, "home.html"),
+        game: resolve(__dirname, "game.html"),
       },
     },
   },
