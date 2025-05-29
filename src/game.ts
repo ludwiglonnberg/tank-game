@@ -23,7 +23,7 @@ let mouseY = 0;
 const otherPlayersBullets: { [playerId: string]: Bullet[] } = {};
 export const bullets: Bullet[] = [];
 export const otherPlayers: { [id: string]: Tank } = {};
-
+const apiBase = import.meta.env.VITE_BACKEND_URL + "/api/user";
 const explosions: Explosion[] = [];
 const explosionImage = new Image();
 const tankExplosionImage = new Image();
@@ -39,7 +39,7 @@ export async function showGameOverScreen(won: boolean, winnerName: string) {
 
   if (userId) {
     try {
-      await fetch(import.meta.env.VITE_BACKEND_URL + "api/user/updateStats", {
+      await fetch(`${apiBase}/updateStats`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
